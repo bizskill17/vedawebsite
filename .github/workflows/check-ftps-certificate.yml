@@ -1,0 +1,18 @@
+name: Check VEDA FTPS certificate
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/check-ftps-certificate.yml']
+  workflow_dispatch:
+permissions: {}
+jobs:
+  certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Read public server certificate without logging in
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 25 openssl s_client -connect 82.180.165.180:21 -starttls ftp -servername odiin.in -showcerts </dev/null > /tmp/ftps-certificate.txt 2>/tmp/ftps-diagnostics.txt || true
+          openssl x509 -in /tmp/ftps-certificate.txt -noout -subject -issuer -dates -ext subjectAltName
