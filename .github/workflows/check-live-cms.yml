@@ -1,0 +1,33 @@
+name: Check live VEDA CMS
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/check-live-cms.yml']
+  workflow_dispatch:
+permissions: {}
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Check public routes and backend file protection
+        shell: python
+        run: |
+          import urllib.request, urllib.error
+          base = "https://theveda.co.in"
+          for path in ["/", "/admin/", "/admin/core.php", "/admin/schema.json", "/admin/template.html"]:
+              try:
+                  r = urllib.request.urlopen(base + path + "?cms_check=1", timeout=25)
+                  status, body = r.status, r.read().decode()
+              except urllib.error.HTTPError as e:
+                  status, body = e.code, e.read().decode()
+              print(path, status)
+              if path in ["/", "/admin/"]:
+                  assert status == 200, (path, status, body[:300])
+                  if path == "/admin/":
+                      assert "Set up your studio" in body or "Welcome back" in body, "CMS page not rendered"
+                  else:
+                      assert "{{f" not in body and "Veda" in body, "Website render failed"
+              else:
+                  assert status in [403, 404], "Private CMS source is publicly accessible"
+          print("PASS: website and CMS respond; private source files are blocked")
