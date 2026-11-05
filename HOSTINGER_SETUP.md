@@ -1,37 +1,17 @@
-# Hostinger deployment setup
+# Hostinger FTPS deployment
 
-The workflow at .github/workflows/deploy-hostinger.yml uploads the contents of dist/ to the main domain using SSH and rsync. It does not connect the ChatGPT Site to GitHub or publish changes to Sites.
+Open repository Settings > Secrets and variables > Actions > New repository secret. Add:
 
-## 1. Hostinger SSH
-Open the dashboard for theveda.co.in, search SSH Access, and enable it. Note the host/IP, username and port (commonly 65002; use the value shown). Confirm the main domain document root using File Manager or SSH. Expected format:
- /home/u123456789/domains/theveda.co.in/public_html
-Do not use the system.theveda.co.in directory. The workflow rejects other destination patterns.
+| Secret | Value |
+|---|---|
+| FTP_SERVER | Hostinger FTP hostname or IP, without ftp:// |
+| FTP_USERNAME | Main-domain FTP account username |
+| FTP_PASSWORD | That account's FTP password |
 
-## 2. Create a dedicated key on your own computer
-Run:
- ssh-keygen -t ed25519 -C "github-veda-deploy" -f veda_deploy
-For unattended deployment, leave this dedicated key's passphrase empty. Upload only veda_deploy.pub (the public key) in Hostinger's SSH Keys section. Keep veda_deploy (the private key) private and add it only to the GitHub secret below. Never commit either credential or paste the private key into chat.
+Use the account shown for theveda.co.in, whose upload folder is public_html. Port 21 and public_html are configured in the YAML. SSH keys are unnecessary. The workflow uses explicit FTPS and validates the server certificate; if the IP causes a certificate mismatch, use the FTP hostname confirmed by Hostinger. It will not fall back to unencrypted FTP.
 
-## 3. Verify the server host key
-Run, substituting the actual SSH port and host:
- ssh-keyscan -p 65002 YOUR_HOST > hostinger_known_hosts
- ssh-keygen -lf hostinger_known_hosts
-Compare fingerprints with Hostinger's SSH Access card through hPanel before trusting the file. Use only the verified matching lines in the secret below.
+Back up the main website before the first live upload. In Actions > Deploy VEDA to Hostinger > Run workflow, leave dry_run checked first. It connects and lists planned uploads without writing files. Then run again with dry_run unchecked. Future pushes changing dist/ on main deploy automatically.
 
-## 4. GitHub secrets
-Repository Settings > Environments > New environment: hostinger-production.
-Inside that environment add these secrets:
-- HOSTINGER_HOST: SSH IP address or hostname
-- HOSTINGER_PORT: SSH port
-- HOSTINGER_USER: SSH username
-- HOSTINGER_SSH_KEY: complete contents of the private veda_deploy file, including BEGIN/END lines
-- HOSTINGER_KNOWN_HOSTS: verified contents of hostinger_known_hosts
-- HOSTINGER_PATH: absolute main domain document root, e.g. /home/u123456789/domains/theveda.co.in/public_html
+Only dist/ contents are uploaded. Remote files are never deleted, and subdomain directories are not traversed. Existing files with matching names are overwritten; this FTP version does not make automatic backups. If index.php remains in public_html, the workflow stops for review of the old WordPress entry point. Existing redirects/.htaccess can also affect the displayed website. Removed source assets remain on the server until manually cleaned up.
 
-## 5. First run
-Back up the current main domain files/database before replacing WordPress. Confirm any subdomain folders and retain them. If main-domain index.php remains, the workflow stops; review it and move the old WordPress entry point outside public_html after backup. Existing .htaccess redirects or WordPress rules may also need review if the HTML page does not display.
-Open Actions > Deploy VEDA to Hostinger > Run workflow. Leave dry_run checked for the first run, then inspect logs. Run again with dry_run unchecked to publish.
-Future pushes changing dist/ on main deploy automatically.
-
-The workflow never deletes remote files. Replaced files are backed up in a veda-deploy-backups directory next to public_html, with one folder per run/attempt. Removed source files remain on the server and require manual cleanup. Retain or prune backups through Hostinger as needed. This workflow does not remove the WordPress database, configuration or plugin files.
-No live deployment has been verified until the required secrets are configured and a deployment run succeeds.
+Do not share the FTP password in chat or commit it. No successful live deployment is claimed until a run completes with the secrets configured. The ChatGPT Site still uses its own source repository.
