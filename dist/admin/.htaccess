@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "^(core\.php|schema\.json|template\.html)$">
+Require all denied
+</FilesMatch>

@@ -16,21 +16,32 @@ concurrency:
   cancel-in-progress: false
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
-    env:
-      FTP_SERVER: ${{ secrets.FTP_SERVER }}
-      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+      - name: Set up PHP for CMS verification
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: Check PHP syntax and CMS behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          find dist -name '*.php' -print0 | xargs -0 -n1 php -l
+          python3 tests/cms_integration.py
       - name: Deploy through explicit FTPS on port 21
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
         shell: python
         run: |
-          import ftplib, os, ssl
+          import ftplib, os, ssl, io
           from pathlib import Path
           for key in ("FTP_SERVER", "FTP_USERNAME", "FTP_PASSWORD"):
               if not os.environ.get(key):
@@ -63,7 +74,10 @@ jobs:
                   if not str(exc).startswith("550"):
                       raise
               else:
-                  raise SystemExit("index.php remains in public_html. Review and back up the old WordPress entry point before deploying.")
+                  existing = io.BytesIO()
+                  ftp.retrbinary("RETR index.php", existing.write)
+                  if b"VEDA_CMS_V1" not in existing.getvalue():
+                      raise SystemExit("An unrelated index.php remains. Back up and review it before deploying the CMS.")
               for path in files:
                   relative = path.relative_to(root)
                   print(("Would upload: " if dry else "Uploading: ") + relative.as_posix())

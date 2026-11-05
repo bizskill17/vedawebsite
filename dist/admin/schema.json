@@ -1,0 +1,1442 @@
+{
+  "groups": {
+    "g0": {
+      "label": "Header & navigation",
+      "hideable": false
+    },
+    "g1": {
+      "label": "Hero",
+      "hideable": true
+    },
+    "g2": {
+      "label": "Introduction",
+      "hideable": true
+    },
+    "g3": {
+      "label": "Services introduction & filters",
+      "hideable": false
+    },
+    "g4": {
+      "label": "Our approach",
+      "hideable": true
+    },
+    "g5": {
+      "label": "Frequently asked questions",
+      "hideable": true
+    },
+    "g6": {
+      "label": "Visit & contact",
+      "hideable": true
+    },
+    "g7": {
+      "label": "Footer",
+      "hideable": false
+    },
+    "g8": {
+      "label": "Search engine settings",
+      "hideable": false
+    },
+    "s1": {
+      "label": "Signature relaxation massage",
+      "hideable": true
+    },
+    "s2": {
+      "label": "Focused body massage",
+      "hideable": true
+    },
+    "s3": {
+      "label": "Personalised facial ritual",
+      "hideable": true
+    },
+    "s4": {
+      "label": "Body polish & care",
+      "hideable": true
+    },
+    "s5": {
+      "label": "Wellness consultation",
+      "hideable": true
+    },
+    "s6": {
+      "label": "The slow-down experience",
+      "hideable": true
+    },
+    "s7": {
+      "label": "Aesthetic consultation",
+      "hideable": true
+    },
+    "s8": {
+      "label": "Laser hair reduction",
+      "hideable": true
+    },
+    "s9": {
+      "label": "Chemical peels",
+      "hideable": true
+    },
+    "s10": {
+      "label": "Acne & pigmentation consultation",
+      "hideable": true
+    },
+    "s11": {
+      "label": "Hydrating facial & skin refresh",
+      "hideable": true
+    },
+    "s12": {
+      "label": "Skin texture & age-related concerns",
+      "hideable": true
+    },
+    "s13": {
+      "label": "Haircut, styling & colour",
+      "hideable": true
+    },
+    "s14": {
+      "label": "Hair spa & scalp care",
+      "hideable": true
+    },
+    "s15": {
+      "label": "Grooming & occasion care",
+      "hideable": true
+    },
+    "s16": {
+      "label": "Swedish & aromatherapy massage",
+      "hideable": true
+    },
+    "s17": {
+      "label": "Turkish scrub & bathing ritual",
+      "hideable": true
+    }
+  },
+  "fields": {
+    "f1": {
+      "group": "g8",
+      "label": "Page title",
+      "default": "Veda Wellness & Spa | A little closer to balance",
+      "type": "text"
+    },
+    "f2": {
+      "group": "g0",
+      "label": "Link text",
+      "default": "Our care",
+      "type": "text"
+    },
+    "f3": {
+      "group": "g0",
+      "label": "Link text",
+      "default": "The Veda approach",
+      "type": "text"
+    },
+    "f4": {
+      "group": "g0",
+      "label": "Link text",
+      "default": "Good to know",
+      "type": "text"
+    },
+    "f5": {
+      "group": "g0",
+      "label": "Link text",
+      "default": "Plan your visit",
+      "type": "text"
+    },
+    "f6": {
+      "group": "g1",
+      "label": "Paragraph",
+      "default": "A SPACE TO SLOW DOWN",
+      "type": "text"
+    },
+    "f7": {
+      "group": "g1",
+      "label": "Main heading",
+      "default": "A little closer",
+      "type": "text"
+    },
+    "f8": {
+      "group": "g1",
+      "label": "Main heading",
+      "default": "to",
+      "type": "text"
+    },
+    "f9": {
+      "group": "g1",
+      "label": "Text",
+      "default": "balance.",
+      "type": "text"
+    },
+    "f10": {
+      "group": "g1",
+      "label": "Paragraph",
+      "default": "Wellness care. Aesthetic services. Restorative spa rituals.",
+      "type": "text"
+    },
+    "f11": {
+      "group": "g1",
+      "label": "Paragraph",
+      "default": "Time that belongs entirely to you.",
+      "type": "text"
+    },
+    "f12": {
+      "group": "g1",
+      "label": "Link text",
+      "default": "Discover your ritual",
+      "type": "text"
+    },
+    "f13": {
+      "group": "g1",
+      "label": "Text",
+      "default": "WELLNESS, WITH INTENTION",
+      "type": "text"
+    },
+    "f14": {
+      "group": "g1",
+      "label": "Text",
+      "default": "Mindful care · Unhurried moments",
+      "type": "text"
+    },
+    "f15": {
+      "group": "g2",
+      "label": "Paragraph",
+      "default": "WELCOME TO VEDA",
+      "type": "text"
+    },
+    "f16": {
+      "group": "g2",
+      "label": "Section heading",
+      "default": "Feel cared for.",
+      "type": "text"
+    },
+    "f17": {
+      "group": "g2",
+      "label": "Text",
+      "default": "Leave feeling yourself.",
+      "type": "text"
+    },
+    "f18": {
+      "group": "g2",
+      "label": "Paragraph",
+      "default": "Some days call for a quiet pause. Others call for a fresh start. At Veda, we bring wellness consultations, aesthetic services and spa experiences together, so you can choose the care that feels right for you.",
+      "type": "text"
+    },
+    "f19": {
+      "group": "g2",
+      "label": "Paragraph",
+      "default": "We start by listening. Your preferences, comfort and goals shape your experience, from the first conversation to the final moment of rest.",
+      "type": "text"
+    },
+    "f20": {
+      "group": "g3",
+      "label": "Paragraph",
+      "default": "FIND YOUR MOMENT",
+      "type": "text"
+    },
+    "f21": {
+      "group": "g3",
+      "label": "Section heading",
+      "default": "Care for every kind of day.",
+      "type": "text"
+    },
+    "f22": {
+      "group": "g3",
+      "label": "Paragraph",
+      "default": "Choose a focus. Explore a gentler pace.",
+      "type": "text"
+    },
+    "f23": {
+      "group": "g3",
+      "label": "Button text",
+      "default": "All experiences",
+      "type": "text"
+    },
+    "f24": {
+      "group": "g3",
+      "label": "Button text",
+      "default": "Spa & relaxation",
+      "type": "text"
+    },
+    "f25": {
+      "group": "g3",
+      "label": "Button text",
+      "default": "Skin & body",
+      "type": "text"
+    },
+    "f26": {
+      "group": "g3",
+      "label": "Button text",
+      "default": "Aesthetic services",
+      "type": "text"
+    },
+    "f27": {
+      "group": "g3",
+      "label": "Button text",
+      "default": "Salon & grooming",
+      "type": "text"
+    },
+    "f28": {
+      "group": "g3",
+      "label": "Button text",
+      "default": "Wellness care",
+      "type": "text"
+    },
+    "f29": {
+      "group": "g3",
+      "label": "Paragraph",
+      "default": "Proposed service menu: these options reflect services offered in the Indian wellness and aesthetics market. VEDA’s team must confirm availability, practitioners and suitability before booking.",
+      "type": "text"
+    },
+    "f30": {
+      "group": "s1",
+      "label": "Text",
+      "default": "RESTORE",
+      "type": "text"
+    },
+    "f31": {
+      "group": "s1",
+      "label": "Heading",
+      "default": "Signature relaxation massage",
+      "type": "text"
+    },
+    "f32": {
+      "group": "s1",
+      "label": "Paragraph",
+      "default": "A gentle, unhurried massage with pressure adapted to your comfort. A thoughtful choice when you simply need to unwind.",
+      "type": "text"
+    },
+    "f33": {
+      "group": "s1",
+      "label": "Text",
+      "default": "60 minutes",
+      "type": "text"
+    },
+    "f34": {
+      "group": "s1",
+      "label": "Button text",
+      "default": "Choose this ritual",
+      "type": "text"
+    },
+    "f35": {
+      "group": "s2",
+      "label": "Text",
+      "default": "RELEASE",
+      "type": "text"
+    },
+    "f36": {
+      "group": "s2",
+      "label": "Heading",
+      "default": "Focused body massage",
+      "type": "text"
+    },
+    "f37": {
+      "group": "s2",
+      "label": "Paragraph",
+      "default": "Targeted attention to the areas that feel tight or tired, with a conversation about your preferences before the session.",
+      "type": "text"
+    },
+    "f38": {
+      "group": "s2",
+      "label": "Text",
+      "default": "60 minutes",
+      "type": "text"
+    },
+    "f39": {
+      "group": "s2",
+      "label": "Button text",
+      "default": "Choose this ritual",
+      "type": "text"
+    },
+    "f40": {
+      "group": "s3",
+      "label": "Text",
+      "default": "REFRESH",
+      "type": "text"
+    },
+    "f41": {
+      "group": "s3",
+      "label": "Heading",
+      "default": "Personalised facial ritual",
+      "type": "text"
+    },
+    "f42": {
+      "group": "s3",
+      "label": "Paragraph",
+      "default": "A cleansing and nourishing ritual selected around your skin’s needs, with a calm touch and time to relax.",
+      "type": "text"
+    },
+    "f43": {
+      "group": "s3",
+      "label": "Text",
+      "default": "45 minutes",
+      "type": "text"
+    },
+    "f44": {
+      "group": "s3",
+      "label": "Button text",
+      "default": "Choose this ritual",
+      "type": "text"
+    },
+    "f45": {
+      "group": "s4",
+      "label": "Text",
+      "default": "RENEW",
+      "type": "text"
+    },
+    "f46": {
+      "group": "s4",
+      "label": "Heading",
+      "default": "Body polish & care",
+      "type": "text"
+    },
+    "f47": {
+      "group": "s4",
+      "label": "Paragraph",
+      "default": "A refreshing exfoliation followed by moisturising care, leaving your skin feeling soft and comfortably nourished.",
+      "type": "text"
+    },
+    "f48": {
+      "group": "s4",
+      "label": "Text",
+      "default": "45 minutes",
+      "type": "text"
+    },
+    "f49": {
+      "group": "s4",
+      "label": "Button text",
+      "default": "Choose this ritual",
+      "type": "text"
+    },
+    "f50": {
+      "group": "s5",
+      "label": "Text",
+      "default": "RECONNECT",
+      "type": "text"
+    },
+    "f51": {
+      "group": "s5",
+      "label": "Heading",
+      "default": "Wellness consultation",
+      "type": "text"
+    },
+    "f52": {
+      "group": "s5",
+      "label": "Paragraph",
+      "default": "A one-to-one conversation about your routines, wellbeing goals and preferences, to help you choose your next steps.",
+      "type": "text"
+    },
+    "f53": {
+      "group": "s5",
+      "label": "Text",
+      "default": "30 minutes",
+      "type": "text"
+    },
+    "f54": {
+      "group": "s5",
+      "label": "Button text",
+      "default": "Choose this session",
+      "type": "text"
+    },
+    "f55": {
+      "group": "s6",
+      "label": "Text",
+      "default": "PAUSE",
+      "type": "text"
+    },
+    "f56": {
+      "group": "s6",
+      "label": "Heading",
+      "default": "The slow-down experience",
+      "type": "text"
+    },
+    "f57": {
+      "group": "s6",
+      "label": "Paragraph",
+      "default": "Pair a relaxation massage with a facial ritual for a longer pause. A little more time to settle in and switch off.",
+      "type": "text"
+    },
+    "f58": {
+      "group": "s6",
+      "label": "Text",
+      "default": "105 minutes",
+      "type": "text"
+    },
+    "f59": {
+      "group": "s6",
+      "label": "Button text",
+      "default": "Choose this ritual",
+      "type": "text"
+    },
+    "f60": {
+      "group": "s7",
+      "label": "Text",
+      "default": "REFINE",
+      "type": "text"
+    },
+    "f61": {
+      "group": "s7",
+      "label": "Heading",
+      "default": "Aesthetic consultation",
+      "type": "text"
+    },
+    "f62": {
+      "group": "s7",
+      "label": "Paragraph",
+      "default": "Discuss your skin concerns, appearance goals and treatment preferences in a personalised consultation. Explore suitable options, expected outcomes and aftercare before deciding.",
+      "type": "text"
+    },
+    "f63": {
+      "group": "s7",
+      "label": "Text",
+      "default": "Consultation first",
+      "type": "text"
+    },
+    "f64": {
+      "group": "s7",
+      "label": "Button text",
+      "default": "Enquire about aesthetics",
+      "type": "text"
+    },
+    "f65": {
+      "group": "s8",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f66": {
+      "group": "s8",
+      "label": "Heading",
+      "default": "Laser hair reduction",
+      "type": "text"
+    },
+    "f67": {
+      "group": "s8",
+      "label": "Paragraph",
+      "default": "Explore options for reducing unwanted facial or body hair over a course of sessions. Treatment areas and suitability require a clinical assessment.",
+      "type": "text"
+    },
+    "f68": {
+      "group": "s8",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f69": {
+      "group": "s8",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f70": {
+      "group": "s9",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f71": {
+      "group": "s9",
+      "label": "Heading",
+      "default": "Chemical peels",
+      "type": "text"
+    },
+    "f72": {
+      "group": "s9",
+      "label": "Paragraph",
+      "default": "Discuss peel options for concerns such as uneven tone, dullness and skin texture. The appropriate peel and aftercare depend on your skin assessment.",
+      "type": "text"
+    },
+    "f73": {
+      "group": "s9",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f74": {
+      "group": "s9",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f75": {
+      "group": "s10",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f76": {
+      "group": "s10",
+      "label": "Heading",
+      "default": "Acne & pigmentation consultation",
+      "type": "text"
+    },
+    "f77": {
+      "group": "s10",
+      "label": "Paragraph",
+      "default": "A consultation focused on breakouts, post-acne marks, dark spots or uneven tone, with a personalised discussion of care options.",
+      "type": "text"
+    },
+    "f78": {
+      "group": "s10",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f79": {
+      "group": "s10",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f80": {
+      "group": "s11",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f81": {
+      "group": "s11",
+      "label": "Heading",
+      "default": "Hydrating facial & skin refresh",
+      "type": "text"
+    },
+    "f82": {
+      "group": "s11",
+      "label": "Paragraph",
+      "default": "Explore cleansing, exfoliation and hydration options chosen around your skin type and comfort.",
+      "type": "text"
+    },
+    "f83": {
+      "group": "s11",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f84": {
+      "group": "s11",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f85": {
+      "group": "s12",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f86": {
+      "group": "s12",
+      "label": "Heading",
+      "default": "Skin texture & age-related concerns",
+      "type": "text"
+    },
+    "f87": {
+      "group": "s12",
+      "label": "Paragraph",
+      "default": "Discuss fine lines, texture and acne scars, including whether options such as microneedling or skin-tightening treatments are appropriate.",
+      "type": "text"
+    },
+    "f88": {
+      "group": "s12",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f89": {
+      "group": "s12",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f90": {
+      "group": "s13",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f91": {
+      "group": "s13",
+      "label": "Heading",
+      "default": "Haircut, styling & colour",
+      "type": "text"
+    },
+    "f92": {
+      "group": "s13",
+      "label": "Paragraph",
+      "default": "Explore haircuts, blow-dries, root touch-ups, full colour and highlights, with a consultation about your preferred look.",
+      "type": "text"
+    },
+    "f93": {
+      "group": "s13",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f94": {
+      "group": "s13",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f95": {
+      "group": "s14",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f96": {
+      "group": "s14",
+      "label": "Heading",
+      "default": "Hair spa & scalp care",
+      "type": "text"
+    },
+    "f97": {
+      "group": "s14",
+      "label": "Paragraph",
+      "default": "A proposed menu of conditioning rituals and scalp-care sessions for your hair-care routine.",
+      "type": "text"
+    },
+    "f98": {
+      "group": "s14",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f99": {
+      "group": "s14",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f100": {
+      "group": "s15",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f101": {
+      "group": "s15",
+      "label": "Heading",
+      "default": "Grooming & occasion care",
+      "type": "text"
+    },
+    "f102": {
+      "group": "s15",
+      "label": "Paragraph",
+      "default": "Explore manicure, pedicure, waxing, threading and occasion styling options.",
+      "type": "text"
+    },
+    "f103": {
+      "group": "s15",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f104": {
+      "group": "s15",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f105": {
+      "group": "s16",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f106": {
+      "group": "s16",
+      "label": "Heading",
+      "default": "Swedish & aromatherapy massage",
+      "type": "text"
+    },
+    "f107": {
+      "group": "s16",
+      "label": "Paragraph",
+      "default": "Choose a relaxation-focused massage and discuss your preferred pressure, oils and any sensitivities before the session.",
+      "type": "text"
+    },
+    "f108": {
+      "group": "s16",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f109": {
+      "group": "s16",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f110": {
+      "group": "s17",
+      "label": "Text",
+      "default": "PROPOSED SERVICE",
+      "type": "text"
+    },
+    "f111": {
+      "group": "s17",
+      "label": "Heading",
+      "default": "Turkish scrub & bathing ritual",
+      "type": "text"
+    },
+    "f112": {
+      "group": "s17",
+      "label": "Paragraph",
+      "default": "A body exfoliation and bathing experience inspired by the Turkish hammam tradition. Enquire about the available ritual and facilities.",
+      "type": "text"
+    },
+    "f113": {
+      "group": "s17",
+      "label": "Text",
+      "default": "Availability to be confirmed",
+      "type": "text"
+    },
+    "f114": {
+      "group": "s17",
+      "label": "Button text",
+      "default": "Enquire about this",
+      "type": "text"
+    },
+    "f115": {
+      "group": "g4",
+      "label": "Paragraph",
+      "default": "THE VEDA APPROACH",
+      "type": "text"
+    },
+    "f116": {
+      "group": "g4",
+      "label": "Section heading",
+      "default": "Less rush.",
+      "type": "text"
+    },
+    "f117": {
+      "group": "g4",
+      "label": "Text",
+      "default": "More room for you.",
+      "type": "text"
+    },
+    "f118": {
+      "group": "g4",
+      "label": "Text",
+      "default": "01",
+      "type": "text"
+    },
+    "f119": {
+      "group": "g4",
+      "label": "Heading",
+      "default": "A conversation first",
+      "type": "text"
+    },
+    "f120": {
+      "group": "g4",
+      "label": "Paragraph",
+      "default": "Tell us what you need today. We help you choose an experience around your comfort.",
+      "type": "text"
+    },
+    "f121": {
+      "group": "g4",
+      "label": "Text",
+      "default": "02",
+      "type": "text"
+    },
+    "f122": {
+      "group": "g4",
+      "label": "Heading",
+      "default": "Care at your pace",
+      "type": "text"
+    },
+    "f123": {
+      "group": "g4",
+      "label": "Paragraph",
+      "default": "Share your pressure preferences, sensitivities and questions at any point in your session.",
+      "type": "text"
+    },
+    "f124": {
+      "group": "g4",
+      "label": "Text",
+      "default": "03",
+      "type": "text"
+    },
+    "f125": {
+      "group": "g4",
+      "label": "Heading",
+      "default": "A thoughtful finish",
+      "type": "text"
+    },
+    "f126": {
+      "group": "g4",
+      "label": "Paragraph",
+      "default": "Take a moment before returning to your day, with simple guidance for after your treatment.",
+      "type": "text"
+    },
+    "f127": {
+      "group": "g5",
+      "label": "Paragraph",
+      "default": "GOOD TO KNOW",
+      "type": "text"
+    },
+    "f128": {
+      "group": "g5",
+      "label": "Section heading",
+      "default": "Your questions,",
+      "type": "text"
+    },
+    "f129": {
+      "group": "g5",
+      "label": "Text",
+      "default": "answered.",
+      "type": "text"
+    },
+    "f130": {
+      "group": "g5",
+      "label": "Question",
+      "default": "How do I choose the right treatment?",
+      "type": "text"
+    },
+    "f131": {
+      "group": "g5",
+      "label": "Paragraph",
+      "default": "Start with how you would like to feel: relaxed, refreshed or more focused on your wellbeing. A consultation can help you discuss your goals before selecting a session.",
+      "type": "text"
+    },
+    "f132": {
+      "group": "g5",
+      "label": "Question",
+      "default": "What should I share before a session?",
+      "type": "text"
+    },
+    "f133": {
+      "group": "g5",
+      "label": "Paragraph",
+      "default": "Please share any health conditions, pregnancy, recent procedures, allergies or skin sensitivities. The suitability of a treatment should be confirmed before your appointment.",
+      "type": "text"
+    },
+    "f134": {
+      "group": "g5",
+      "label": "Question",
+      "default": "Is this my first spa visit?",
+      "type": "text"
+    },
+    "f135": {
+      "group": "g5",
+      "label": "Paragraph",
+      "default": "You are welcome to ask questions throughout. Discuss your comfort, pressure and privacy preferences before the session starts.",
+      "type": "text"
+    },
+    "f136": {
+      "group": "g5",
+      "label": "Question",
+      "default": "How do I enquire about aesthetic services?",
+      "type": "text"
+    },
+    "f137": {
+      "group": "g5",
+      "label": "Paragraph",
+      "default": "Choose an aesthetic consultation by calling the team. Discuss your concerns and goals with the team so they can explain the available services, suitability, expected outcomes and aftercare.",
+      "type": "text"
+    },
+    "f138": {
+      "group": "g5",
+      "label": "Question",
+      "default": "How early should I arrive?",
+      "type": "text"
+    },
+    "f139": {
+      "group": "g5",
+      "label": "Paragraph",
+      "default": "Allow around 15 minutes before your appointment so you have time to settle in and discuss your preferences.",
+      "type": "text"
+    },
+    "f140": {
+      "group": "g6",
+      "label": "Paragraph",
+      "default": "VISIT VEDA · GUWAHATI",
+      "type": "text"
+    },
+    "f141": {
+      "group": "g6",
+      "label": "Section heading",
+      "default": "A little pause.",
+      "type": "text"
+    },
+    "f142": {
+      "group": "g6",
+      "label": "Text",
+      "default": "Close to home.",
+      "type": "text"
+    },
+    "f143": {
+      "group": "g6",
+      "label": "Paragraph",
+      "default": "Call the team to discuss services, availability and appointments.",
+      "type": "text"
+    },
+    "f144": {
+      "group": "g6",
+      "label": "Link text",
+      "default": "Call +91 87230 88888",
+      "type": "text"
+    },
+    "f145": {
+      "group": "g6",
+      "label": "Heading",
+      "default": "Find us",
+      "type": "text"
+    },
+    "f146": {
+      "group": "g6",
+      "label": "Address",
+      "default": "Piazza, 1st Floor, Dr B. Baruah Road",
+      "type": "text"
+    },
+    "f147": {
+      "group": "g6",
+      "label": "Address",
+      "default": "Opposite Landmark Hotel, Ulubari",
+      "type": "text"
+    },
+    "f148": {
+      "group": "g6",
+      "label": "Address",
+      "default": "Guwahati, Assam – 781007",
+      "type": "text"
+    },
+    "f149": {
+      "group": "g6",
+      "label": "Heading",
+      "default": "Follow VEDA",
+      "type": "text"
+    },
+    "f150": {
+      "group": "g6",
+      "label": "Link text",
+      "default": "Instagram",
+      "type": "text"
+    },
+    "f151": {
+      "group": "g6",
+      "label": "Link text",
+      "default": "Facebook",
+      "type": "text"
+    },
+    "f152": {
+      "group": "g6",
+      "label": "Heading",
+      "default": "Opening hours",
+      "type": "text"
+    },
+    "f153": {
+      "group": "g6",
+      "label": "Paragraph",
+      "default": "Listed hours: 10:00 AM–8:00 PM, daily.",
+      "type": "text"
+    },
+    "f154": {
+      "group": "g6",
+      "label": "Text",
+      "default": "Weekend hours differ across listings. Please call to confirm before visiting.",
+      "type": "text"
+    },
+    "f155": {
+      "group": "g6",
+      "label": "Link text",
+      "default": "Open in Google Maps",
+      "type": "text"
+    },
+    "f156": {
+      "group": "g6",
+      "label": "Paragraph",
+      "default": "Opposite Landmark Hotel · Near Nehru Stadium",
+      "type": "text"
+    },
+    "f157": {
+      "group": "g7",
+      "label": "Paragraph",
+      "default": "A little closer to balance.",
+      "type": "text"
+    },
+    "f158": {
+      "group": "g7",
+      "label": "Link text",
+      "default": "Instagram",
+      "type": "text"
+    },
+    "f159": {
+      "group": "g7",
+      "label": "Link text",
+      "default": "Facebook",
+      "type": "text"
+    },
+    "f160": {
+      "group": "g7",
+      "label": "Text",
+      "default": "©",
+      "type": "text"
+    },
+    "f161": {
+      "group": "g7",
+      "label": "Text",
+      "default": "Veda Wellness & Spa",
+      "type": "text"
+    },
+    "f162": {
+      "group": "g8",
+      "label": "Search description",
+      "default": "Explore thoughtful wellness consultations, aesthetic consultations, restorative massage and skin rituals at Veda Wellness & Spa.",
+      "type": "text"
+    },
+    "f163": {
+      "group": "g0",
+      "label": "Link destination",
+      "default": "#home",
+      "type": "url"
+    },
+    "f164": {
+      "group": "g0",
+      "label": "Image",
+      "default": "veda-logo.png",
+      "type": "image"
+    },
+    "f165": {
+      "group": "g0",
+      "label": "Image description",
+      "default": "VEDA Wellness & Spa",
+      "type": "text"
+    },
+    "f166": {
+      "group": "g0",
+      "label": "Accessible label",
+      "default": "Main navigation",
+      "type": "text"
+    },
+    "f167": {
+      "group": "g0",
+      "label": "Link destination",
+      "default": "#care",
+      "type": "url"
+    },
+    "f168": {
+      "group": "g0",
+      "label": "Link destination",
+      "default": "#philosophy",
+      "type": "url"
+    },
+    "f169": {
+      "group": "g0",
+      "label": "Link destination",
+      "default": "#questions",
+      "type": "url"
+    },
+    "f170": {
+      "group": "g0",
+      "label": "Link destination",
+      "default": "#visit",
+      "type": "url"
+    },
+    "f171": {
+      "group": "g1",
+      "label": "Link destination",
+      "default": "#care",
+      "type": "url"
+    },
+    "f172": {
+      "group": "g3",
+      "label": "Accessible label",
+      "default": "Treatment categories",
+      "type": "text"
+    },
+    "f173": {
+      "group": "s1",
+      "label": "Service category",
+      "default": "spa",
+      "type": "category"
+    },
+    "f174": {
+      "group": "s1",
+      "label": "Treatment name",
+      "default": "Signature relaxation massage",
+      "type": "text"
+    },
+    "f175": {
+      "group": "s2",
+      "label": "Service category",
+      "default": "spa",
+      "type": "category"
+    },
+    "f176": {
+      "group": "s2",
+      "label": "Treatment name",
+      "default": "Focused body massage",
+      "type": "text"
+    },
+    "f177": {
+      "group": "s3",
+      "label": "Service category",
+      "default": "skin",
+      "type": "category"
+    },
+    "f178": {
+      "group": "s3",
+      "label": "Treatment name",
+      "default": "Personalised facial ritual",
+      "type": "text"
+    },
+    "f179": {
+      "group": "s4",
+      "label": "Service category",
+      "default": "skin",
+      "type": "category"
+    },
+    "f180": {
+      "group": "s4",
+      "label": "Treatment name",
+      "default": "Body polish & care",
+      "type": "text"
+    },
+    "f181": {
+      "group": "s5",
+      "label": "Service category",
+      "default": "wellness",
+      "type": "category"
+    },
+    "f182": {
+      "group": "s5",
+      "label": "Treatment name",
+      "default": "Wellness consultation",
+      "type": "text"
+    },
+    "f183": {
+      "group": "s6",
+      "label": "Service category",
+      "default": "spa",
+      "type": "category"
+    },
+    "f184": {
+      "group": "s6",
+      "label": "Treatment name",
+      "default": "The slow-down experience",
+      "type": "text"
+    },
+    "f185": {
+      "group": "s7",
+      "label": "Service category",
+      "default": "aesthetics",
+      "type": "category"
+    },
+    "f186": {
+      "group": "s7",
+      "label": "Treatment name",
+      "default": "Aesthetic consultation",
+      "type": "text"
+    },
+    "f187": {
+      "group": "s8",
+      "label": "Service category",
+      "default": "aesthetics",
+      "type": "category"
+    },
+    "f188": {
+      "group": "s8",
+      "label": "Treatment name",
+      "default": "Laser hair reduction",
+      "type": "text"
+    },
+    "f189": {
+      "group": "s9",
+      "label": "Service category",
+      "default": "aesthetics",
+      "type": "category"
+    },
+    "f190": {
+      "group": "s9",
+      "label": "Treatment name",
+      "default": "Chemical peels",
+      "type": "text"
+    },
+    "f191": {
+      "group": "s10",
+      "label": "Service category",
+      "default": "aesthetics",
+      "type": "category"
+    },
+    "f192": {
+      "group": "s10",
+      "label": "Treatment name",
+      "default": "Acne & pigmentation consultation",
+      "type": "text"
+    },
+    "f193": {
+      "group": "s11",
+      "label": "Service category",
+      "default": "aesthetics",
+      "type": "category"
+    },
+    "f194": {
+      "group": "s11",
+      "label": "Treatment name",
+      "default": "Hydrating facial & skin refresh",
+      "type": "text"
+    },
+    "f195": {
+      "group": "s12",
+      "label": "Service category",
+      "default": "aesthetics",
+      "type": "category"
+    },
+    "f196": {
+      "group": "s12",
+      "label": "Treatment name",
+      "default": "Skin texture & age-related concerns",
+      "type": "text"
+    },
+    "f197": {
+      "group": "s13",
+      "label": "Service category",
+      "default": "salon",
+      "type": "category"
+    },
+    "f198": {
+      "group": "s13",
+      "label": "Treatment name",
+      "default": "Haircut, styling & colour",
+      "type": "text"
+    },
+    "f199": {
+      "group": "s14",
+      "label": "Service category",
+      "default": "salon",
+      "type": "category"
+    },
+    "f200": {
+      "group": "s14",
+      "label": "Treatment name",
+      "default": "Hair spa & scalp care",
+      "type": "text"
+    },
+    "f201": {
+      "group": "s15",
+      "label": "Service category",
+      "default": "salon",
+      "type": "category"
+    },
+    "f202": {
+      "group": "s15",
+      "label": "Treatment name",
+      "default": "Grooming & occasion care",
+      "type": "text"
+    },
+    "f203": {
+      "group": "s16",
+      "label": "Service category",
+      "default": "spa",
+      "type": "category"
+    },
+    "f204": {
+      "group": "s16",
+      "label": "Treatment name",
+      "default": "Swedish & aromatherapy massage",
+      "type": "text"
+    },
+    "f205": {
+      "group": "s17",
+      "label": "Service category",
+      "default": "spa",
+      "type": "category"
+    },
+    "f206": {
+      "group": "s17",
+      "label": "Treatment name",
+      "default": "Turkish scrub & bathing ritual",
+      "type": "text"
+    },
+    "f207": {
+      "group": "g6",
+      "label": "Link destination",
+      "default": "tel:+918723088888",
+      "type": "url"
+    },
+    "f208": {
+      "group": "g6",
+      "label": "Link destination",
+      "default": "https://www.instagram.com/veda.ghy/",
+      "type": "url"
+    },
+    "f209": {
+      "group": "g6",
+      "label": "Accessible label",
+      "default": "VEDA on Instagram (opens in a new tab)",
+      "type": "text"
+    },
+    "f210": {
+      "group": "g6",
+      "label": "Link destination",
+      "default": "https://www.facebook.com/Veda.Ghy/",
+      "type": "url"
+    },
+    "f211": {
+      "group": "g6",
+      "label": "Accessible label",
+      "default": "VEDA on Facebook (opens in a new tab)",
+      "type": "text"
+    },
+    "f212": {
+      "group": "g6",
+      "label": "Link destination",
+      "default": "https://www.google.com/maps/search/?api=1&query=Veda+Salon+Spa+Piazza+Dr+B+Baruah+Road+Guwahati",
+      "type": "url"
+    },
+    "f213": {
+      "group": "g6",
+      "label": "Map embed URL",
+      "default": "https://maps.google.com/maps?q=Veda%20Salon%20Spa%20Piazza%20Dr%20B%20Baruah%20Road%20Guwahati&output=embed",
+      "type": "map"
+    },
+    "f214": {
+      "group": "g6",
+      "label": "Title",
+      "default": "Map search for VEDA Salon and Spa, Ulubari, Guwahati",
+      "type": "text"
+    },
+    "f215": {
+      "group": "g7",
+      "label": "Link destination",
+      "default": "#home",
+      "type": "url"
+    },
+    "f216": {
+      "group": "g7",
+      "label": "Image",
+      "default": "veda-logo.png",
+      "type": "image"
+    },
+    "f217": {
+      "group": "g7",
+      "label": "Image description",
+      "default": "VEDA Wellness & Spa",
+      "type": "text"
+    },
+    "f218": {
+      "group": "g7",
+      "label": "Link destination",
+      "default": "https://www.instagram.com/veda.ghy/",
+      "type": "url"
+    },
+    "f219": {
+      "group": "g7",
+      "label": "Accessible label",
+      "default": "VEDA on Instagram (opens in a new tab)",
+      "type": "text"
+    },
+    "f220": {
+      "group": "g7",
+      "label": "Link destination",
+      "default": "https://www.facebook.com/Veda.Ghy/",
+      "type": "url"
+    },
+    "f221": {
+      "group": "g7",
+      "label": "Accessible label",
+      "default": "VEDA on Facebook (opens in a new tab)",
+      "type": "text"
+    },
+    "f222": {
+      "group": "g1",
+      "label": "Hero background image",
+      "default": "spa-hero.jpg",
+      "type": "image"
+    }
+  }
+}
