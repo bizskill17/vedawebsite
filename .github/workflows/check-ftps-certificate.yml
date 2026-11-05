@@ -16,3 +16,9 @@ jobs:
           set -euo pipefail
           timeout 25 openssl s_client -connect 82.180.165.180:21 -starttls ftp -servername odiin.in -showcerts </dev/null > /tmp/ftps-certificate.txt 2>/tmp/ftps-diagnostics.txt || true
           openssl x509 -in /tmp/ftps-certificate.txt -noout -subject -issuer -dates -ext subjectAltName
+      - name: Verify certificate chain and hostname
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 25 openssl s_client -connect 82.180.165.180:21 -starttls ftp -servername hstgr.io -verify_hostname hstgr.io -verify_return_error </dev/null > /tmp/verified.txt 2>&1
+          grep -E 'Verification:|Verify return code:' /tmp/verified.txt
