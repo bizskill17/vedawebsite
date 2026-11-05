@@ -48,9 +48,9 @@ jobs:
           # Fail on TLS/certificate errors; never fall back to plaintext FTP.
           with ftplib.FTP_TLS(context=ssl.create_default_context(), timeout=60) as ftp:
               ftp.connect("82.180.165.180", 21)
-              # Connect to VEDA's known IPv4 endpoint, retaining the supplied
-              # hostname for TLS SNI and certificate verification.
-              ftp.host = host
+              # Connect to VEDA's known IPv4 endpoint and use its inspected
+              # certificate SAN hstgr.io for TLS verification (inspected on this server).
+              ftp.host = "hstgr.io"
               ftp.login(os.environ["FTP_USERNAME"], os.environ["FTP_PASSWORD"])
               ftp.prot_p()
               ftp.voidcmd("TYPE I")
