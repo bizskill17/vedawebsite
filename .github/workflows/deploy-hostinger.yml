@@ -1,0 +1,90 @@
+name: Deploy VEDA to Hostinger
+
+on:
+  push:
+    branches: [main]
+    paths: ['dist/**', '.github/workflows/deploy-hostinger.yml']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Preview file transfers without changing the server
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hostinger-veda-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: hostinger-production
+    env:
+      SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+      SSH_PORT: ${{ secrets.HOSTINGER_PORT }}
+      SSH_USER: ${{ secrets.HOSTINGER_USER }}
+      SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+      KNOWN_HOSTS: ${{ secrets.HOSTINGER_KNOWN_HOSTS }}
+      TARGET_PATH: ${{ secrets.HOSTINGER_PATH }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Validate configuration and prepare SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in SSH_HOST SSH_PORT SSH_USER SSH_KEY KNOWN_HOSTS TARGET_PATH; do
+            if [[ -z "${!name}" ]]; then echo "::error::Missing secret for $name"; exit 1; fi
+          done
+          [[ "$SSH_HOST" =~ ^[a-zA-Z0-9.-]+$ ]]
+          [[ "$SSH_PORT" =~ ^[0-9]+$ ]]
+          [[ "$SSH_USER" =~ ^[a-zA-Z0-9_-]+$ ]]
+          # Only the main domain's document root is accepted.
+          [[ "$TARGET_PATH" =~ ^/home/[a-zA-Z0-9_-]+/domains/theveda\.co\.in/public_html/?$ ]]
+          test -s dist/index.html
+          if find dist -type l | grep -q .; then echo "::error::Symlinks are not supported"; exit 1; fi
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/hostinger
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/hostinger ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host hostinger-veda
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/hostinger
+            IdentitiesOnly yes
+            BatchMode yes
+            StrictHostKeyChecking yes
+            ConnectTimeout 20
+          EOF
+          chmod 600 ~/.ssh/config
+
+      - name: Check destination and transfer website
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="${TARGET_PATH%/}"
+          ssh hostinger-veda "test -d '$target' && command -v rsync >/dev/null"
+          # A remaining WordPress entry point can prevent index.html being served.
+          if ssh hostinger-veda "test -f '$target/index.php'"; then
+            echo "::error::index.php remains in the main domain root. Back it up and check WordPress removal before deploying."
+            exit 1
+          fi
+          args=(-az --itemize-changes --delay-updates --backup)
+          args+=(--backup-dir="../veda-deploy-backups/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}")
+          if [[ "$DRY_RUN" == "true" ]]; then args+=(--dry-run); fi
+          # No --delete: other files and subdomain folders are preserved.
+          rsync "${args[@]}" -e ssh dist/ "hostinger-veda:$target/"
+
+      - name: Remove temporary SSH files
+        if: always()
+        shell: bash
+        run: rm -f ~/.ssh/hostinger ~/.ssh/config ~/.ssh/known_hosts
