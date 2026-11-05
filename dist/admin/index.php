@@ -1,7 +1,7 @@
 <?php
 require __DIR__.'/core.php';
 try { boot();sessionboot(); } catch(Throwable $e) { http_response_code(503);exit('CMS storage is unavailable. Ask the hosting administrator to allow PHP to create veda-cms-data beside public_html.'); }
-$s=readstate();$user=current();$error='';$message=$_SESSION['flash']??'';unset($_SESSION['flash']);$page=$_GET['page']??'content';$group=$_GET['group']??'g1';$defs=schema();if(!isset($defs['groups'][$group]))$group='g1';
+$s=readstate();$user=cms_current();$error='';$message=$_SESSION['flash']??'';unset($_SESSION['flash']);$page=$_GET['page']??'content';$group=$_GET['group']??'g1';$defs=schema();if(!isset($defs['groups'][$group]))$group='g1';
 try {
  if($_SERVER['REQUEST_METHOD']==='POST') {
   csrf();$action=$_POST['action']??'';
@@ -38,7 +38,7 @@ try {
   }
  }
 } catch(Throwable $e){$error=$e->getMessage();}
-$s=readstate();$user=current();
+$s=readstate();$user=cms_current();
 function tokenfield(){echo '<input type="hidden" name="csrf" value="'.esc($_SESSION['csrf']).'">';}
 ?>
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VEDA · Website studio</title><link rel="stylesheet" href="admin.css"></head><body>

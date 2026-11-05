@@ -24,7 +24,7 @@ function sessionboot(): void {
     if(isset($_SESSION['last']) && time()-$_SESSION['last']>3600) { unset($_SESSION['uid']);session_regenerate_id(true); }
     $_SESSION['last']=time();
 }
-function current(): ?array { $u=readstate()['users'][$_SESSION['uid']??'']??null;return $u && $u['active'] && ($u['version']??0)===($_SESSION['version']??-1) ? $u : null; }
+function cms_current(): ?array { $u=readstate()['users'][$_SESSION['uid']??'']??null;return $u && $u['active'] && ($u['version']??0)===($_SESSION['version']??-1) ? $u : null; }
 function allowed(array $u,string $g): bool { return $u['role']==='admin' || in_array($g,$u['groups'],true); }
 function csrf(): void { if(!hash_equals($_SESSION['csrf'],(string)($_POST['csrf']??'')))throw new RuntimeException('Session expired. Refresh and try again.'); }
 function audit(array &$s,string $action): void { $s['audit'][]=['time'=>gmdate('c'),'user'=>$_SESSION['uid']??'setup','action'=>$action];$s['audit']=array_slice($s['audit'],-200); }
