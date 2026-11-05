@@ -1,0 +1,27 @@
+name: Check VEDA FTP directory
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/check-ftp-directory.yml']
+  workflow_dispatch:
+permissions: {}
+jobs:
+  directory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    steps:
+      - name: Inspect FTP root without uploading
+        shell: python
+        run: |
+          import ftplib, os, ssl
+          with ftplib.FTP_TLS(context=ssl.create_default_context(), timeout=30) as ftp:
+              ftp.connect("82.180.165.180", 21)
+              ftp.host = "hstgr.io"
+              ftp.login(os.environ["FTP_USERNAME"], os.environ["FTP_PASSWORD"])
+              ftp.prot_p()
+              print("Starting directory:", ftp.pwd())
+              for name, facts in ftp.mlsd():
+                  print(facts.get("type"), name)
