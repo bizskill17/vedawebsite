@@ -54,7 +54,9 @@ jobs:
               ftp.login(os.environ["FTP_USERNAME"], os.environ["FTP_PASSWORD"])
               ftp.prot_p()
               ftp.voidcmd("TYPE I")
-              ftp.cwd("public_html")
+              destination = ftp.pwd()
+              if destination.rstrip("/") != "/public_html":
+                  raise SystemExit("Unexpected FTP starting directory; expected /public_html")
               try:
                   ftp.size("index.php")
               except ftplib.error_perm as exc:
@@ -67,8 +69,7 @@ jobs:
                   print(("Would upload: " if dry else "Uploading: ") + relative.as_posix())
                   if dry:
                       continue
-                  ftp.cwd("/")
-                  ftp.cwd("public_html")
+                  ftp.cwd(destination)
                   for part in relative.parts[:-1]:
                       try:
                           ftp.mkd(part)
