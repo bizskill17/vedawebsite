@@ -1,5 +1,4 @@
 name: Deploy VEDA to Hostinger
-
 on:
   push:
     branches: [main]
@@ -7,84 +6,72 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: Preview file transfers without changing the server
+        description: Preview uploads without changing server files
         type: boolean
         default: true
-
 permissions:
   contents: read
-
 concurrency:
   group: hostinger-veda-production
   cancel-in-progress: false
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    environment: hostinger-production
     env:
-      SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
-      SSH_PORT: ${{ secrets.HOSTINGER_PORT }}
-      SSH_USER: ${{ secrets.HOSTINGER_USER }}
-      SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
-      KNOWN_HOSTS: ${{ secrets.HOSTINGER_KNOWN_HOSTS }}
-      TARGET_PATH: ${{ secrets.HOSTINGER_PATH }}
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-
-      - name: Validate configuration and prepare SSH
-        shell: bash
+      - name: Deploy through explicit FTPS on port 21
+        shell: python
         run: |
-          set -euo pipefail
-          for name in SSH_HOST SSH_PORT SSH_USER SSH_KEY KNOWN_HOSTS TARGET_PATH; do
-            if [[ -z "${!name}" ]]; then echo "::error::Missing secret for $name"; exit 1; fi
-          done
-          [[ "$SSH_HOST" =~ ^[a-zA-Z0-9.-]+$ ]]
-          [[ "$SSH_PORT" =~ ^[0-9]+$ ]]
-          [[ "$SSH_USER" =~ ^[a-zA-Z0-9_-]+$ ]]
-          # Only the main domain's document root is accepted.
-          [[ "$TARGET_PATH" =~ ^/home/[a-zA-Z0-9_-]+/domains/theveda\.co\.in/public_html/?$ ]]
-          test -s dist/index.html
-          if find dist -type l | grep -q .; then echo "::error::Symlinks are not supported"; exit 1; fi
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "$SSH_KEY" > ~/.ssh/hostinger
-          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/hostinger ~/.ssh/known_hosts
-          cat > ~/.ssh/config <<EOF
-          Host hostinger-veda
-            HostName $SSH_HOST
-            User $SSH_USER
-            Port $SSH_PORT
-            IdentityFile ~/.ssh/hostinger
-            IdentitiesOnly yes
-            BatchMode yes
-            StrictHostKeyChecking yes
-            ConnectTimeout 20
-          EOF
-          chmod 600 ~/.ssh/config
-
-      - name: Check destination and transfer website
-        shell: bash
-        run: |
-          set -euo pipefail
-          target="${TARGET_PATH%/}"
-          ssh hostinger-veda "test -d '$target' && command -v rsync >/dev/null"
-          # A remaining WordPress entry point can prevent index.html being served.
-          if ssh hostinger-veda "test -f '$target/index.php'"; then
-            echo "::error::index.php remains in the main domain root. Back it up and check WordPress removal before deploying."
-            exit 1
-          fi
-          args=(-az --itemize-changes --delay-updates --backup)
-          args+=(--backup-dir="../veda-deploy-backups/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}")
-          if [[ "$DRY_RUN" == "true" ]]; then args+=(--dry-run); fi
-          # No --delete: other files and subdomain folders are preserved.
-          rsync "${args[@]}" -e ssh dist/ "hostinger-veda:$target/"
-
-      - name: Remove temporary SSH files
-        if: always()
-        shell: bash
-        run: rm -f ~/.ssh/hostinger ~/.ssh/config ~/.ssh/known_hosts
+          import ftplib, os, ssl
+          from pathlib import Path
+          for key in ("FTP_SERVER", "FTP_USERNAME", "FTP_PASSWORD"):
+              if not os.environ.get(key):
+                  raise SystemExit(f"Missing GitHub secret: {key}")
+          host = os.environ["FTP_SERVER"]
+          if "://" in host or "/" in host:
+              raise SystemExit("FTP_SERVER must be a hostname or IP without ftp://")
+          root = Path("dist")
+          if not (root / "index.html").is_file():
+              raise SystemExit("dist/index.html is missing")
+          files = sorted(p for p in root.rglob("*") if p.is_file())
+          if any(p.is_symlink() for p in root.rglob("*")):
+              raise SystemExit("Symlinks are not supported")
+          dry = os.environ.get("DRY_RUN") == "true"
+          # Fail on TLS/certificate errors; never fall back to plaintext FTP.
+          with ftplib.FTP_TLS(context=ssl.create_default_context(), timeout=60) as ftp:
+              ftp.connect(host, 21)
+              ftp.login(os.environ["FTP_USERNAME"], os.environ["FTP_PASSWORD"])
+              ftp.prot_p()
+              ftp.cwd("public_html")
+              try:
+                  ftp.size("index.php")
+              except ftplib.error_perm as exc:
+                  if not str(exc).startswith("550"):
+                      raise
+              else:
+                  raise SystemExit("index.php remains in public_html. Review and back up the old WordPress entry point before deploying.")
+              for path in files:
+                  relative = path.relative_to(root)
+                  print(("Would upload: " if dry else "Uploading: ") + relative.as_posix())
+                  if dry:
+                      continue
+                  ftp.cwd("/")
+                  ftp.cwd("public_html")
+                  for part in relative.parts[:-1]:
+                      try:
+                          ftp.mkd(part)
+                      except ftplib.error_perm as exc:
+                          if not str(exc).startswith("550"):
+                              raise
+                      ftp.cwd(part)
+                  with path.open("rb") as source:
+                      ftp.storbinary("STOR " + relative.name, source)
+          # Upload only: no remote delete commands or subdomain traversal.
