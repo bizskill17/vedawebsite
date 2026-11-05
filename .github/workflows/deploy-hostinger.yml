@@ -2,7 +2,7 @@ name: Deploy VEDA to Hostinger
 on:
   push:
     branches: [main]
-    paths: ['dist/**', '.github/workflows/deploy-hostinger.yml']
+    paths: ['dist/**']
   workflow_dispatch:
     inputs:
       dry_run:
@@ -47,9 +47,13 @@ jobs:
           dry = os.environ.get("DRY_RUN") == "true"
           # Fail on TLS/certificate errors; never fall back to plaintext FTP.
           with ftplib.FTP_TLS(context=ssl.create_default_context(), timeout=60) as ftp:
-              ftp.connect(host, 21)
+              ftp.connect("82.180.165.180", 21)
+              # Connect to VEDA's known IPv4 endpoint, retaining the supplied
+              # hostname for TLS SNI and certificate verification.
+              ftp.host = host
               ftp.login(os.environ["FTP_USERNAME"], os.environ["FTP_PASSWORD"])
               ftp.prot_p()
+              ftp.voidcmd("TYPE I")
               ftp.cwd("public_html")
               try:
                   ftp.size("index.php")
